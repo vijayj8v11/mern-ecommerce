@@ -178,247 +178,238 @@ const Checkout = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={() => navigate('/cart')}
-            className="flex items-center text-blue-600 hover:text-blue-800"
-          >
-            <FaArrowLeft className="mr-2" />
-            Back to Cart
-          </button>
-          <h1 className="text-3xl font-bold text-gray-900">Checkout</h1>
+    <div className="checkout-container">
+      <div className="container">
+        {/* Header */}
+        <div className="checkout-header">
+          <div>
+            <button
+              onClick={() => navigate('/cart')}
+              className="back-link"
+            >
+              <FaArrowLeft />
+              Back to Cart
+            </button>
+            <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginTop: '10px' }}>Checkout</h1>
+          </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left Column - Address and Payment */}
-        <div className="space-y-8">
-          {/* Shipping Address */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center mb-4">
-              <FaMapMarkerAlt className="text-blue-600 mr-2" />
-              <h2 className="text-xl font-semibold">Shipping Address</h2>
-            </div>
+        <div className="checkout-layout">
+          {/* Left Column - Address and Payment */}
+          <div className="checkout-form">
+            {/* Shipping Address */}
+            <div className="form-section">
+              <div className="form-section-title">
+                <FaMapMarkerAlt />
+                Shipping Address
+              </div>
 
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    <FaUser className="inline mr-1" />
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    value={user.name}
-                    disabled
-                    className="w-full p-3 border border-gray-300 rounded-lg bg-gray-50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    <FaPhone className="inline mr-1" />
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    value={address.phone}
-                    onChange={(e) => handleAddressChange('phone', e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter phone number"
-                  />
+              <div className="form-group">
+                <div className="form-group-row">
+                  <div className="form-field">
+                    <label className="form-label">
+                      <FaUser /> Full Name
+                    </label>
+                    <input
+                      type="text"
+                      value={user.name}
+                      disabled
+                      className="form-input"
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label className="form-label">
+                      <FaPhone /> Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      value={address.phone}
+                      onChange={(e) => handleAddressChange('phone', e.target.value)}
+                      className="form-input"
+                      placeholder="Enter phone number"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  <FaHome className="inline mr-1" />
-                  Street Address
+              <div className="form-field">
+                <label className="form-label">
+                  <FaHome /> Street Address
                 </label>
                 <input
                   type="text"
                   value={address.street}
                   onChange={(e) => handleAddressChange('street', e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="form-input"
                   placeholder="Enter street address"
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    <FaCity className="inline mr-1" />
-                    City
+              <div className="form-group-row">
+                <div className="form-field">
+                  <label className="form-label">
+                    <FaCity /> City
                   </label>
                   <input
                     type="text"
                     value={address.city}
                     onChange={(e) => handleAddressChange('city', e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="form-input"
                     placeholder="Enter city"
                   />
                 </div>
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    <FaMapPin className="inline mr-1" />
-                    State
+                <div className="form-field">
+                  <label className="form-label">
+                    <FaMapPin /> State
                   </label>
                   <input
                     type="text"
                     value={address.state}
                     onChange={(e) => handleAddressChange('state', e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="form-input"
                     placeholder="Enter state"
                   />
                 </div>
-                <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    <FaMapPin className="inline mr-1" />
-                    ZIP Code
+                <div className="form-field">
+                  <label className="form-label">
+                    <FaMapPin /> ZIP Code
                   </label>
                   <input
                     type="text"
                     value={address.zipCode}
                     onChange={(e) => handleAddressChange('zipCode', e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="form-input"
                     placeholder="Enter ZIP code"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  <FaGlobe className="inline mr-1" />
-                  Country
+              <div className="form-field">
+                <label className="form-label">
+                  <FaGlobe /> Country
                 </label>
                 <input
                   type="text"
                   value={address.country}
                   onChange={(e) => handleAddressChange('country', e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="form-input"
                 />
               </div>
             </div>
-          </div>
 
-          {/* Payment Method */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
-            
-            <div className="space-y-4">
-              <label className="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="cod"
-                  checked={paymentMethod === 'cod'}
-                  onChange={(e) => handlePaymentMethodChange(e.target.value)}
-                  className="mr-3"
-                />
-                <div className="flex items-center">
-                  <FaMoneyBillWave className="text-green-600 mr-2" />
-                  <div>
-                    <div className="font-medium">Cash on Delivery</div>
-                    <div className="text-sm text-gray-600">Pay when you receive your order</div>
-                  </div>
-                </div>
-              </label>
-
-              <label className="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="razorpay"
-                  checked={paymentMethod === 'razorpay'}
-                  onChange={(e) => handlePaymentMethodChange(e.target.value)}
-                  className="mr-3"
-                />
-                <div className="flex items-center">
-                  <FaCreditCard className="text-blue-600 mr-2" />
-                  <div>
-                    <div className="font-medium">Pay Online (Razorpay)</div>
-                    <div className="text-sm text-gray-600">Credit/Debit cards, UPI, Net Banking</div>
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column - Order Summary */}
-        <div className="space-y-6">
-          {/* Order Summary */}
-          <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
-            
-            {/* Cart Items */}
-            <div className="space-y-4 mb-6">
-              {cartItems.map((item) => (
-                <div key={item.product} className="flex items-center space-x-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-16 h-16 object-cover rounded-lg"
+            {/* Payment Method */}
+            <div className="form-section">
+              <div className="form-section-title">
+                <FaCreditCard />
+                Payment Method
+              </div>
+              
+              <div className="payment-options">
+                <label className="payment-option">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="cod"
+                    checked={paymentMethod === 'cod'}
+                    onChange={(e) => handlePaymentMethodChange(e.target.value)}
                   />
-                  <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">{item.name}</h3>
-                    <p className="text-gray-600">Qty: {item.quantity}</p>
+                  <div className="payment-info">
+                    <div className="payment-method-name">
+                      <FaMoneyBillWave /> Cash on Delivery
+                    </div>
+                    <div className="payment-method-desc">Pay when you receive your order</div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-medium">₹{(item.price * item.quantity).toLocaleString()}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                </label>
 
-            {/* Price Breakdown */}
-            <div className="border-t pt-4 space-y-2">
-              <div className="flex justify-between text-gray-600">
-                <span>Subtotal ({cartItems.length} items)</span>
-                <span>₹{calculateSubtotal().toLocaleString()}</span>
+                <label className="payment-option">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="razorpay"
+                    checked={paymentMethod === 'razorpay'}
+                    onChange={(e) => handlePaymentMethodChange(e.target.value)}
+                  />
+                  <div className="payment-info">
+                    <div className="payment-method-name">
+                      <FaCreditCard /> Pay Online (Razorpay)
+                    </div>
+                    <div className="payment-method-desc">Credit/Debit cards, UPI, Net Banking</div>
+                  </div>
+                </label>
               </div>
-              <div className="flex justify-between text-gray-600">
-                <span>Tax (18% GST)</span>
-                <span>₹{calculateTax().toFixed(0)}</span>
+            </div>
+          </div>
+
+          {/* Right Column - Order Summary */}
+          <div>
+            <div className="order-summary">
+              <h2 className="summary-title">Order Summary</h2>
+              
+              {/* Cart Items */}
+              <div className="cart-items">
+                {cartItems.map((item) => (
+                  <div key={item.product} className="cart-item">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="item-image"
+                    />
+                    <div className="item-details">
+                      <h3 className="item-name">{item.name}</h3>
+                      <p className="item-quantity">Qty: {item.quantity}</p>
+                    </div>
+                    <div className="item-total">
+                      ₹{(item.price * item.quantity).toLocaleString()}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="flex justify-between text-gray-600">
-                <span>Shipping</span>
-                <span className="text-green-600">Free</span>
-              </div>
-              <div className="border-t pt-2">
-                <div className="flex justify-between text-lg font-semibold text-gray-900">
+
+              {/* Price Breakdown */}
+              <div className="price-breakdown">
+                <div className="price-row">
+                  <span>Subtotal ({cartItems.length} items)</span>
+                  <span>₹{calculateSubtotal().toLocaleString()}</span>
+                </div>
+                <div className="price-row">
+                  <span>Tax (18% GST)</span>
+                  <span>₹{calculateTax().toFixed(0)}</span>
+                </div>
+                <div className="price-row">
+                  <span>Shipping</span>
+                  <span className="free-shipping">Free</span>
+                </div>
+                <div className="price-row total">
                   <span>Total</span>
                   <span>₹{calculateTotal().toFixed(0)}</span>
                 </div>
               </div>
-            </div>
 
-            {/* Place Order Button */}
-            <button
-              onClick={handlePlaceOrder}
-              disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 font-medium mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              {loading ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-              ) : (
-                <>
-                  {paymentMethod === 'cod' ? 'Place Order (Cash on Delivery)' : 'Proceed to Payment'}
-                </>
-              )}
-            </button>
+              {/* Place Order Button */}
+              <button
+                onClick={handlePlaceOrder}
+                disabled={loading}
+                className="place-order-btn"
+              >
+                {loading ? (
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                ) : (
+                  <>
+                    {paymentMethod === 'cod' ? 'Place Order (COD)' : 'Proceed to Payment'}
+                  </>
+                )}
+              </button>
 
-            {/* Additional Info */}
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <h3 className="font-medium text-gray-800 mb-2">Order Information</h3>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Delivery within 3-5 business days</li>
-                <li>• Free shipping on all orders</li>
-                <li>• Easy returns within 30 days</li>
-                <li>• Secure payment processing</li>
-              </ul>
+              {/* Additional Info */}
+              <div className="order-info-box">
+                <h3 className="order-info-title">Order Information</h3>
+                <ul className="order-info-list">
+                  <li className="order-info-item">• Delivery within 3-5 business days</li>
+                  <li className="order-info-item">• Free shipping on all orders</li>
+                  <li className="order-info-item">• Easy returns within 30 days</li>
+                  <li className="order-info-item">• Secure payment processing</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
