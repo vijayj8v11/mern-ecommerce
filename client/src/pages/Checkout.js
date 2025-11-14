@@ -10,7 +10,6 @@ import {
   FaArrowLeft,
   FaUser,
   FaPhone,
-  FaEnvelope,
   FaHome,
   FaCity,
   FaGlobe,
@@ -33,7 +32,6 @@ const Checkout = () => {
     country: 'India',
     phone: ''
   });
-  const [useExistingAddress, setUseExistingAddress] = useState(false);
 
   useEffect(() => {
     if (!user) {
